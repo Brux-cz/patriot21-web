@@ -46,7 +46,7 @@ const mockIssues = [
 ]
 
 // Funkce pro získání barvy podle statusu
-const getStatusColor = (status) => {
+const getStatusColor = (status: string) => {
   switch (status) {
     case 'Nahlášeno':
       return 'bg-yellow-500'
@@ -64,21 +64,21 @@ export default function IssuesPage() {
     <div className="py-12">
       <div className="container-custom">
         <h1 className="section-title text-center mb-6">Co napravit?</h1>
-        
+
         <p className="text-center max-w-2xl mx-auto mb-12">
-          Zde můžete nahlásit problémy v obci, které je potřeba řešit. Může se jednat o poškozený obecní majetek, 
+          Zde můžete nahlásit problémy v obci, které je potřeba řešit. Může se jednat o poškozený obecní majetek,
           nepořádek, nefunkční osvětlení a další záležitosti, které zhoršují kvalitu života v obci.
         </p>
-        
+
         <div className="flex justify-center mb-12">
           <Link href="/co-napravit/novy" className="btn btn-primary">
             Nahlásit nový problém
           </Link>
         </div>
-        
+
         <div className="max-w-4xl mx-auto">
           <h2 className="text-xl font-bold mb-6">Aktuální problémy</h2>
-          
+
           <div className="space-y-6">
             {mockIssues.map((issue) => (
               <article key={issue.id} className="card p-6">
@@ -92,7 +92,7 @@ export default function IssuesPage() {
                     {issue.status}
                   </span>
                 </div>
-                
+
                 <div className="text-gray-600 mb-4">
                   <p className="flex items-center text-sm mb-1">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -114,15 +114,15 @@ export default function IssuesPage() {
                     {issue.author}
                   </p>
                 </div>
-                
+
                 <p className="text-gray-600 mb-4">{issue.description}</p>
-                
+
                 <div className="bg-gray-300 h-40 w-full mb-4 rounded">
                   {/* Placeholder pro obrázek */}
                 </div>
-                
-                <Link 
-                  href={`/co-napravit/${issue.slug}`} 
+
+                <Link
+                  href={`/co-napravit/${issue.slug}`}
                   className="text-primary hover:underline font-medium"
                 >
                   Zobrazit detail
