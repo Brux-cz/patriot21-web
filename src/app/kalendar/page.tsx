@@ -72,7 +72,7 @@ interface Event {
 
 // Funkce pro seskupení událostí podle měsíce
 const groupEventsByMonth = (events: Event[]) => {
-  const grouped = {}
+  const grouped: { [key: string]: Event[] } = {}
 
   events.forEach(event => {
     const date = new Date(event.date)
