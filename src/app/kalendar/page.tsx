@@ -59,39 +59,50 @@ const mockEvents = [
   }
 ]
 
+// Definice typu pro událost
+interface Event {
+  id: number;
+  title: string;
+  date: string;
+  time: string;
+  location: string;
+  description: string;
+  slug: string;
+}
+
 // Funkce pro seskupení událostí podle měsíce
-const groupEventsByMonth = (events) => {
+const groupEventsByMonth = (events: Event[]) => {
   const grouped = {}
-  
+
   events.forEach(event => {
     const date = new Date(event.date)
     const monthYear = date.toLocaleString('cs-CZ', { month: 'long', year: 'numeric' })
-    
+
     if (!grouped[monthYear]) {
       grouped[monthYear] = []
     }
-    
+
     grouped[monthYear].push(event)
   })
-  
+
   return grouped
 }
 
 export default function CalendarPage() {
   const groupedEvents = groupEventsByMonth(mockEvents)
-  
+
   return (
     <div className="py-12">
       <div className="container-custom">
         <h1 className="section-title text-center mb-12">Kalendář akcí</h1>
-        
+
         <div className="max-w-4xl mx-auto">
           {Object.entries(groupedEvents).map(([monthYear, events]) => (
             <div key={monthYear} className="mb-12">
               <h2 className="text-2xl font-bold mb-6 pb-2 border-b border-gray-200">
                 {monthYear}
               </h2>
-              
+
               <div className="space-y-6">
                 {events.map((event) => (
                   <article key={event.id} className="card p-6">
@@ -102,14 +113,14 @@ export default function CalendarPage() {
                           new Date(event.date).toLocaleString('cs-CZ', { month: 'short' })
                         }</div>
                       </div>
-                      
+
                       <div>
                         <h3 className="text-xl font-bold mb-2">
                           <Link href={`/kalendar/${event.slug}`} className="hover:text-primary">
                             {event.title}
                           </Link>
                         </h3>
-                        
+
                         <div className="text-gray-600 mb-3">
                           <p className="flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -125,11 +136,11 @@ export default function CalendarPage() {
                             {event.location}
                           </p>
                         </div>
-                        
+
                         <p className="text-gray-600">{event.description}</p>
-                        
-                        <Link 
-                          href={`/kalendar/${event.slug}`} 
+
+                        <Link
+                          href={`/kalendar/${event.slug}`}
                           className="inline-block mt-4 text-primary hover:underline font-medium"
                         >
                           Více informací
