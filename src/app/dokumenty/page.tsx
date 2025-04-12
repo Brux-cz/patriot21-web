@@ -60,7 +60,7 @@ const mockDocuments = [
 ]
 
 // Funkce pro získání ikony podle typu souboru
-const getFileIcon = (fileType) => {
+const getFileIcon = (fileType: string) => {
   switch (fileType) {
     case 'PDF':
       return (
@@ -100,11 +100,11 @@ export default function DocumentsPage() {
     <div className="py-12">
       <div className="container-custom">
         <h1 className="section-title text-center mb-6">Dokumenty</h1>
-        
+
         <p className="text-center max-w-2xl mx-auto mb-12">
           Zde najdete důležité dokumenty týkající se spolku Patriot21 a obce Zlatníky-Hodkovice.
         </p>
-        
+
         <div className="max-w-4xl mx-auto">
           <div className="space-y-6">
             {mockDocuments.map((document) => (
@@ -113,11 +113,11 @@ export default function DocumentsPage() {
                   <div className="mr-4 flex-shrink-0">
                     {getFileIcon(document.fileType)}
                   </div>
-                  
+
                   <div className="flex-grow">
                     <h2 className="text-lg font-bold mb-2">{document.title}</h2>
                     <p className="text-gray-600 mb-3">{document.description}</p>
-                    
+
                     <div className="flex flex-wrap gap-4 text-sm text-gray-500 mb-4">
                       <span className="flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -125,14 +125,14 @@ export default function DocumentsPage() {
                         </svg>
                         {document.date}
                       </span>
-                      
+
                       <span className="flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                         </svg>
                         {document.fileType}
                       </span>
-                      
+
                       <span className="flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
@@ -140,9 +140,9 @@ export default function DocumentsPage() {
                         {document.fileSize}
                       </span>
                     </div>
-                    
-                    <a 
-                      href={document.url} 
+
+                    <a
+                      href={document.url}
                       className="btn btn-primary inline-flex items-center"
                       target="_blank"
                       rel="noopener noreferrer"
